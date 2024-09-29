@@ -1,0 +1,47 @@
+{% include 'header.html' %}
+{% include 'nav.html' %}
+
+<div class="w-full pt-20">
+    {% for hire in hires %}
+    <div class="min-h-40 my-4 w-[60%] mx-auto bg-slate-100 rounded-md shadow-md p-5">
+        <div class="flex items-center">
+            <div class="cursor-pointer w-9 h-9 rounded-full overflow-hidden flex justify-center items-center bg-black">
+                <img src="" alt="" class="object-cover w-full h-full">
+            </div>
+            <!-- Display the username dynamically -->
+            <div class="pl-2 flex-cols">
+                <a href="#" class=" text-gray-700 font-semibold hover:text-green-800 hover:underline cursor-pointer">
+                    {{ hire.username }}
+                </a>
+                <p class="text-sm text-gray-600">{{ hire.created_at }}</p>
+            </div>
+        </div>
+        <hr class="my-2 bg-black">
+        <div class="text-gray-700">
+            <div class="flex my-2">
+                <div class="text-orange-800 min-w-24">Job type: </div>
+                <!-- Display the expertise type dynamically -->
+                <p class="">{{ hire.expart_type }}</p>
+            </div>
+            <div class="flex my-2">
+                <div class="min-w-24 hover:underline cursor-pointer text-orange-800">Description: </div>
+                <!-- Display the description dynamically -->
+                <p class="">{{ hire.description }}</p>
+            </div>
+            <div class="flex my-2">
+                <p class="text-orange-800">Offered payment: </p>
+                <!-- Display the offered money dynamically -->
+                <p class="text-green-800">{{ hire.offered_money }}</p>
+                taka
+            </div>
+        </div>
+        <hr class="my-2 bg-black">
+        <!-- You can keep the button static or link it dynamically -->
+        <button class="bg-orange-500 text-white rounded-md shadow-md px-4 py-2">Checkout</button>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% include 'footer.html' %}
