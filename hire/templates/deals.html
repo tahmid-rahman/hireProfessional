@@ -1,0 +1,68 @@
+{% include 'header.html' %}
+{% include 'nav.html' %}
+<section class="mt-[65px]">
+    <div class="min-h-40 mt-4 w-[60%] mx-auto bg-slate-100 rounded-md shadow-md p-5">
+        <div class="flex items-center">
+            <div class="cursor-pointer w-9 h-9 rounded-full overflow-hidden flex justify-center items-center bg-black">
+                <img src="" alt="" class="object-cover w-full h-full">
+            </div>
+            <!-- Display the username dynamically -->
+            <div class="pl-2 flex-cols">
+                <a href="#" class=" text-gray-700 font-semibold hover:text-green-800 hover:underline cursor-pointer">
+                    {{ hireOne.username }}
+                </a>
+                <p class="text-sm text-gray-600">{{ hireOne.created_at }}</p>
+            </div>
+        </div>
+        <hr class="my-2 bg-black">
+        <div class="text-gray-700">
+            <div class="flex my-2">
+                <div class="text-orange-800 min-w-24">Job type: </div>
+                <!-- Display the expertise type dynamically -->
+                <p class="">{{ hireOne.expart_type }}</p>
+            </div>
+            <div class="flex my-2">
+                <div class="min-w-24 hover:underline cursor-pointer text-orange-800">Description: </div>
+                <!-- Display the description dynamically -->
+                <p class="">{{ hireOne.description }}</p>
+            </div>
+            <div class="flex my-2">
+                <p class="text-orange-800">Offered payment: </p>
+                <!-- Display the offered money dynamically -->
+                <p class="text-green-800">{{ hireOne.offered_money }}</p>
+                taka
+            </div>
+        </div>
+    </div>
+    <div class="w-fit mx-auto text-3xl my-3 text-teal-800">Intersted Professional</div>
+    <hr>
+    {% for post in applidPost %}
+    <div class="min-h-40 w-[60%] mx-auto rounded-md shadow-md p-5">
+        <div class="flex items-center">
+            <div class="cursor-pointer w-9 h-9 rounded-full overflow-hidden flex justify-center items-center bg-black">
+                <img src="" alt="" class="object-cover w-full h-full">
+            </div>
+            <div class="pl-2 flex-cols">
+                <a href="#" class=" text-gray-700 font-semibold hover:text-green-800 hover:underline cursor-pointer">
+                    {{ post.pID.username }}
+                </a>
+                <p class="text-sm text-gray-600">{{ post.created_at }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="flex my-2">
+            <p class="text-orange-800">Bid money: </p>
+            <p class="text-green-800">{{ post.bidPrice }}</p>
+            taka
+        </div>
+        <div class="flex my-2">
+            <div class="min-w-24 hover:underline cursor-pointer text-orange-800">Offer : </div>
+            <!-- Display the description dynamically -->
+            <p class="">{{ post.offer }}</p>
+        </div>
+    </div>
+    {% endfor%}
+
+</section>
+
+{% include 'footer.html' %}

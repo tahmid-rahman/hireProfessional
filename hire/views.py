@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import HirePost, Professional
+from .models import HirePost, Professional,BidForJob
 # Create your views here.
 
 
@@ -23,6 +23,21 @@ def try_view(request):
     return render(request,'try_view.html')
 
 
+def deal(request, workId):
+    user_id = Professional.objects.get(ProfessionID='2')
+    if request.method == 'POST':
+        job_post = HirePost.objects.get(hireID=workId)
+        bid_money = request.POST.get('bid_money')
+        offering = request.POST.get('description')
+        applyJob = BidForJob(pID=user_id,jobID=job_post, offer=offering, bidPrice=bid_money)
+        applyJob.save()
+
+        return redirect(f'/hire/deals/{workId}')
+    
+    hireOne = HirePost.objects.get(hireID=workId)
+    applied_Post = BidForJob.objects.filter(jobID__hireID=workId).order_by('-created_at')
+
+    return render(request, 'deals.html', {'hireOne': hireOne, 'applidPost':applied_Post})
 
 
 def professional(request):
@@ -44,5 +59,7 @@ def professional(request):
         return redirect('/hire/professionals')
 
     exparts = Professional.objects.all()
+    for e in exparts:
+        print(e.ProfessionID)
     return render(request,'professionals.html',{'exparts': exparts})
 

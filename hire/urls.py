@@ -6,4 +6,5 @@ urlpatterns = [
     path('',views.hire, name="hire"),
     path('check/',views.try_view, name="tryView"),
     path('professionals/',views.professional, name="professional"),
+    path('deals/<workId>/',views.deal, name="deal"),
 ]
